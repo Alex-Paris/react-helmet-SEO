@@ -20,7 +20,16 @@ export default function UserPage({ data, error }) {
     <>
       <Head>
         <title>Test - {data.name}</title>
+        <meta property="og:title" content={`Test - ${data.name}`} />
+
         <meta name="description" content={data.name} />
+        <meta property="og:description" content={data.name} />
+
+        <meta property="og:image" content={data.photo} />
+        <meta property="og:type" content="website" />
+
+        {/* <link rel="canonical" href={window.location.href} /> */}
+        {/* <meta property="og:url" content={window.location.href} /> */}
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>{data.name}</div>
