@@ -1,4 +1,5 @@
 import type { User } from '../interfaces'
+import Head from 'next/head'
 import useSwr from 'swr'
 import Link from 'next/link'
 
@@ -11,14 +12,21 @@ export default function Index() {
   if (!data) return <div>Loading...</div>
 
   return (
-    <ul>
-      {data.map((user) => (
-        <li key={user.id}>
-          <Link href="/user/[id]" as={`/user/${user.id}`} legacyBehavior>
-            {`User ${user.id}`}
-          </Link>
-        </li>
-      ))}
-    </ul>
+    <>
+      <Head>
+        <title>Meta SEO Test</title>
+        <meta name="description" content="This is a meta test" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <ul>
+        {data.map((user) => (
+          <li key={user.id}>
+            <Link href="/user/[id]" as={`/user/${user.id}`} legacyBehavior>
+              {`User ${user.id}`}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </>
   )
 }

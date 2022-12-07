@@ -30,9 +30,13 @@ export default function UserPage({ data, error }) {
 
 // This gets called on every request
 export async function getServerSideProps(context) {
+  // Loading server
+  const dev = process.env.NODE_ENV !== 'production';
+  const server = dev ? 'http://localhost:3000' : 'https://react-helmet-seo.vercel.app';
+
   // Fetch data from external API
   const data = await fetch(
-    `http://localhost:3000/api/user/${context.query.id}`
+    `${server}/api/user/${context.query.id}`
   ).then((res) => res.json())
 
   // Pass data to the page via props
